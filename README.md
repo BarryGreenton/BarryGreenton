@@ -1,42 +1,30 @@
 # Linsong Ge
 
-I’m an undergraduate working across computer science and finance. I study how statistical models behave on historical data. My undergraduate work spans portfolio risk, forecasting and image processing. A question I keep coming back to is how to represent the data before fitting a model: a stock can be a node in a graph, a country can appear under several names, and an underwater photograph can need a different correction depending on how it degraded.
+I study computer science and finance at South China University of Technology and spent a semester at UC Berkeley. I work on quantitative portfolio research. Two questions have shaped my projects so far: how closely can a small, tradable basket follow an index, and how much can the history of two stocks tell us about the risk of holding them together?
 
-## Selected projects
+## Portfolio construction and trading signals
 
-**[Learning correlations between stocks](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/equity-graph-risk)** · Use price histories and a graph of stock relationships to estimate a portfolio’s risk matrix.
+**[Tracking the CSI 300 with mixed-integer optimization](https://github.com/BarryGreenton/Stock-Index-Fitting-MILP)**  
+During my asset-management internship, I built a Gurobi model that turns index weights into an affordable basket of whole trading lots. I tested the holdings against minute-by-minute index moves and compared ways of penalizing tracking deviations. A colleague’s [companion implementation](https://github.com/Wang-Bingjie-nus/Stock-Index-Fitting) explores a different construction rule: start with a feasible greedy basket, then trade off allocation error against correlation-based tracking risk. It includes the team’s comparative charts.
 
-**[Olympic medal forecasting](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/olympic-medals)** · Separate the chance of reaching the podium from the number of medals a delegation could win.
+**[Learning which stocks move together](https://github.com/BarryGreenton/equity-graph-risk)**  
+I worked on the risk branch of a student portfolio research project. A temporal Transformer encodes each stock’s history; graph attention uses past relationships to estimate future pairwise correlations. In the [full team implementation](https://github.com/Xyy1001/ETF_ML_SCUT), a separate LSTM–Transformer branch forecasts prices. The backtest combines expected returns and a covariance matrix to calculate portfolio weights.
 
-**[Underwater image enhancement](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/underwater-imaging)** · Diagnose colour cast, low light and blur before choosing a restoration method.
+**[Price-action factor research at Minsy AI](https://github.com/asech109/pa-lib)** · private team repository  
+During a month-long remote internship with a Berkeley classmate, I researched price and volume signals for a trading research assistant. I organized the factor workspace, translated trading ideas into testable rules, and built a backtest to compare signals and simple weighted combinations against baseline strategies.
 
-## Reproducing the work
+| Research project | What I investigated |
+| --- | --- |
+| [ETF allocation](https://github.com/BarryGreenton/etf-allocation) | How a rolling covariance estimate changes the risk input to a ten-ETF allocation model. I worked on the covariance calculation and backtesting. |
+| [ETF rotation](https://github.com/BarryGreenton/etf-rotation) | How a price-change rule and a trend score rank the same four funds, with positions lagged one session in the backtest. |
+| [China equity style factors](https://github.com/BarryGreenton/equity-style) | How industry adjustment and nonlinear size exposure change the information carried by market capitalization. |
+| [Chinese equity market risk](https://github.com/BarryGreenton/market-risk) | How turnover, reversal and other daily indicators can inform exposure to equities, bonds and cash. |
 
-Seven project directories include a Python example with a local dependency list. Three historical checks use the original research inputs: 250 daily ETF covariance matrices, two rotation rules over 2,001 price dates, and the Olympic delegation mapping. The project pages distinguish those checks from the results reported in the original studies.
+## Statistical modeling and computer vision
 
-## Undergraduate project index
+**[The halo effect in speed-dating decisions](https://github.com/DaDa-Chan/speed-dating-halo)** · UC Berkeley, Linear Models  
+Our team compared the traits people said they valued with their decisions after meeting a partner. We used Elastic Net with cross-validation grouped by participant, so one person’s dates stayed in the same fold. Participant fixed effects let us compare choices made by the same person. The Frisch–Waugh–Lovell theorem gives the interpretation: after accounting for the other ratings, how much of the remaining variation in decisions is associated with attractiveness?
 
-### Quantitative research
+- [Olympic medal forecasting](https://github.com/BarryGreenton/olympic-medals) · For 2025 MCM Problem C, our team separated the probability of winning a medal from the expected count for medal-winning delegations.
+- [Underwater image enhancement](https://github.com/BarryGreenton/underwater-imaging) · Our team used colour, brightness and edge statistics to select corrections for different kinds of image degradation.
 
-| Project | Methods | Public material |
-| --- | --- | --- |
-| [Learning correlations between stocks](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/equity-graph-risk) | Graph Transformer · PyTorch | Code and study notes |
-| [ETF allocation with rolling risk estimates](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/etf-allocation) | Rolling covariance · pandas | Code and study notes |
-| [Momentum across four ETFs](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/etf-rotation) | Trend scoring · scikit-learn | Code and study notes |
-| [China equity size exposures](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/equity-style) | Industry neutralization · WLS | Code and study notes |
-| [A risk score for the Chinese equity market](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/market-risk) | PCA · entropy weighting | Code and study notes |
-
-### Statistical modeling and vision
-
-| Project | Methods | Public material |
-| --- | --- | --- |
-| [Olympic medal forecasting](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/olympic-medals) | Historical entity mapping · random forests | Code and study notes |
-| [Diagnosing underwater image degradation](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/underwater-imaging) | Image statistics · convolution | Code and study notes |
-
-### Company research, trading and systems
-
-| Project | Methods | Public material |
-| --- | --- | --- |
-| [BYD equity valuation](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/byd-valuation) | Discounted cash flow · sensitivity analysis | Case study |
-| [Commodity futures trading journal](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/futures-journal) | Simulated orders · drawdown analysis | Case study |
-| [Embedded communications on a vehicle controller](https://github.com/BarryGreenton/BarryGreenton/tree/main/projects/embedded-communications) | Embedded C · serial interfaces | Case study |
